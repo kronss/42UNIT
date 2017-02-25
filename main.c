@@ -39,10 +39,8 @@ int     main(void)
 	// char *s = "LYDI";
 
 	
-
-
-	b = ft_printf("%.2d\n", 4242);
-	a =    printf("%.2d\n", 4242);
+	b = ft_printf("ft_p: [%#o] [%#.0o]\n", 0, 0);
+	a =    printf("orig: [%#o] [%#.0o]\n", 0, 0);
 
 	
 	printf("ft_p: [%d]\n", b);
@@ -50,16 +48,22 @@ int     main(void)
 	printf("======================\n");
 	fflush(stdout);
 
-	// b = ft_printf("ft_p[%o]\n", 0);
-	// a =    printf("orig[%o]\n", 0);
+	// b = ft_printf("ft_p[%#o]\n", 0);
+	// a =    printf("orig[%#o]\n", 0);
 
-
-
-	
 	// printf("ft_p: [%d]\n", b);
 	// printf("orig: [%d]\n", a);
 	// printf("======================\n");
 	// fflush(stdout);
+
+	// b = ft_printf("ft_p[%o]\n", 0);
+	// a =    printf("orig[%o]\n", 0);
+
+	// printf("ft_p: [%d]\n", b);
+	// printf("orig: [%d]\n", a);
+	// printf("======================\n");
+	// fflush(stdout);
+
 
     return (0);
 }

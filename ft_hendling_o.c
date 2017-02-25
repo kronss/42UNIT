@@ -42,7 +42,7 @@ static char			ft_strlen_o_digit(t_list *lst, intmax_t digit)
 		res += 1;
 	if (tmp > 0)
 		lst->precision = tmp;
-	else if (digit == 0 && lst->precision == 0)
+	else if (digit == 0 && lst->precision == 0 && lst->flags[1] != '#')
 	{
 		lst->precision = -2;
 		res = 0;
