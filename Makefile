@@ -19,13 +19,11 @@ NAME = libftprintf.a
 OBJECT = ./ft_printf.o \
 	./ft_look_conversion.o \
 	./ft_print_char.o \
-	./ft_print_nbr.o \
 	./ft_strchr_f.o \
 	./ft_strsub.o \
 	./ft_strdup.o \
 	./ft_atoi_f.o \
 	./ft_print_str.o \
-	./ft_print_octal.o \
 	./ft_print_wchar.o \
 	./ft_print_wstr.o \
 	./ft_out.o \
@@ -38,7 +36,7 @@ OBJECT = ./ft_printf.o \
 	./ft_hendling_unsigned_digit.o \
 	./ft_hendling_x.o \
 	./ft_hendling_o.o \
-	./ft_hendling_ptr.o \
+	./ft_hendling_ptr.o 
 
 .PHONY: all clean fclean re
 
@@ -62,9 +60,6 @@ ft_printf.o: ft_printf.c
 ft_print_char.o: ft_print_char.c
 	$(GCC) $(F) -c ft_print_char.c
 
-ft_print_nbr.o: ft_print_nbr.c
-	$(GCC) $(F) -c ft_print_nbr.c
-
 ft_strchr_f.o: ft_strchr_f.c
 	$(GCC) $(F) -c ft_strchr_f.c
 
@@ -76,9 +71,6 @@ ft_atoi.o: ft_atoi.c
 
 ft_print_str.o: ft_print_str.c
 	$(GCC) $(F) -c ft_print_str.c
-
-ft_print_octal.o: ft_print_octal.c
-	$(GCC) $(F) -c ft_print_octal.c
 
 ft_hendling_ptr.o: ft_hendling_ptr.c
 	$(GCC) $(F) -c ft_hendling_ptr.c

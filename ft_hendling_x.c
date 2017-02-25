@@ -12,23 +12,27 @@
 
 #include "ft_printf.h"
 
-
-static char				ft_strlen_x_digit(t_list *lst, intmax_t digit)
+static char			ft_size_x_digit(intmax_t digit)
 {
-	char	res;
-	char	tmp;
-	intmax_t digit_tmp;
-	
-	tmp = 0;
-	digit_tmp = digit;
-	res = 1;
+	char			res;
 
-	digit_tmp /= 16;
-	while (digit_tmp)
+	res = 1;
+	digit /= 16;
+	while (digit)
 	{
-		digit_tmp /= 16;
+		digit /= 16;
 		res++;
 	}
+	return (res);
+}
+
+static char			ft_strlen_x_digit(t_list *lst, intmax_t digit)
+{
+	char			res;
+	char			tmp;
+	
+	tmp = 0;
+	res = ft_size_x_digit(digit);
 	if (lst->precision != -1 && lst->precision > res)
 	{
 		tmp = (lst->precision - res);
@@ -48,22 +52,16 @@ static char				ft_strlen_x_digit(t_list *lst, intmax_t digit)
 	return (res);
 }
 
-
-static char			ft_print_x_digit(uintmax_t digit, t_list *lst, char *base)
+static char			ft_print_x(uintmax_t digit, t_list *lst, char *base)
 {
-	char len;
+	char			len;
 
 	len = 0;
-	// printf("size precision (%d)\n", lst->precision);
-	// printf("size size (%d)\n", lst->size);
-	// printf("size width (%d)\n", lst->width);
-
 	if (digit == 0 && lst->precision == -2)
 		return (0);
-
 	if (digit >= 16)
 	{
-		len += ft_print_x_digit(digit / 16, lst, base);
+		len += ft_print_x(digit / 16, lst, base);
 		len += ft_print_char(base[digit % 16]);
 	}
 	else
@@ -71,49 +69,30 @@ static char			ft_print_x_digit(uintmax_t digit, t_list *lst, char *base)
 	return (len);
 }
 
-
-
-
-
-static short ft_hend_x_digit(t_list *lst, uintmax_t digit)
+static short		ft_hend_x_digit(t_list *lst, uintmax_t digit)
 {
-	short len;
+	short			len;
 
 	len = 0;
 	if ((lst->flags)[2] == '0' && lst->precision == -1)
 		(lst->flags)[0] = '0';
-
 	lst->size = ft_strlen_x_digit(lst, digit);
-	
 	if (lst->flags[0] == '0' && lst->flags[1] == '#' && digit != 0)
 		len += (lst->spec == 'X') ? (ft_print_str("0X", -1)) : (ft_print_str("0x", -1));
-
 	while ((lst->flags)[3] != '-' && lst->width > (lst->size))
 		(len += ft_print_char((lst->flags)[0])) && lst->width--;
-
-	if ((lst->flags[0] == ' ' && lst->flags[1] == '#' && digit != 0))// || (lst->spec == 'p'))
+	if ((lst->flags[0] == ' ' && lst->flags[1] == '#' && digit != 0))
 		len += (lst->spec == 'X') ? (ft_print_str("0X", -1)) : (ft_print_str("0x", -1));
-	
-	while (lst->precision != -1 && lst->precision > 0)								//precision
+	while (lst->precision != -1 && lst->precision > 0)
 		(len += ft_print_char('0')) && lst->precision--;
-	
-
-	len += (lst->spec == 'X') ? ft_print_x_digit(digit, lst, "0123456789ABCDEF") : ft_print_x_digit(digit, lst, "0123456789abcdef");
-	// if (lst->spec == 'X')
-	// 	len += ft_print_x_digit(digit, lst, "0123456789ABCDEF");
-	// else
-	// 	len += ft_print_x_digit(digit, lst, "0123456789abcdef");
-
-
+	len += (lst->spec == 'X') ? ft_print_x(digit, lst, "0123456789ABCDEF") :
+	 ft_print_x(digit, lst, "0123456789abcdef");
 	while (lst->width > lst->size && (lst->flags)[3] == '-')
 		(len += ft_print_char(' ')) && lst->width--;
 	return (len);
 }
 
-
-
-
-int			ft_hendling_x(t_list *lst, void *digit)
+int					ft_hendling_x(t_list *lst, void *digit)
 {
 	if (lst->j)
 		return (ft_hend_x_digit(lst, (uintmax_t)digit));

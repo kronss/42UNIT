@@ -16,9 +16,9 @@
 
 #include "ft_printf.h"
 
-int				ft_print_percent(t_list *lst, char c)
+int					ft_print_percent(t_list *lst, char c)
 {
-	int			len;
+	int				len;
 
 	len = 0;
 	if ((lst->flags)[2] == '0')

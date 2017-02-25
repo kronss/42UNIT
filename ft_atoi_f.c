@@ -12,24 +12,15 @@
 
 #include "ft_printf.h"
 
-int			ft_atoi_f(char **s)
+int				ft_atoi_f(char **s)
 {
-	int		res;
-	int		i;
-	int		charge;
+	int			res;
+	int			i;
+	int			charge;
 
 	res = 0;
 	i = 0;
 	charge = 1;
-	// while ((9 <= (*s)[i] && (*s)[i] <= 13) || (*s)[i] == 32)
-	// 	i++;
-	// while (((*s)[i] == '+' || (*s)[i] == '-')
-	// 	&& ('0' <= (*s)[i + 1] && (*s)[i + 1] <= '9'))
-	// {
-	// 	if ((*s)[i] == '-' && ('0' <= (*s)[i + 1] && (*s)[i + 1] <= '9'))
-	// 		charge = -1;
-	// 	i++;
-	// }
 	while ('0' <= (*s)[i] && (*s)[i] <= '9')
 	{
 		res = res * 10 + (*s)[i] - '0';

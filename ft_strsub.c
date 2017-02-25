@@ -12,10 +12,10 @@
 
 #include "ft_printf.h"
 
-char		*ft_strsub(char const *s, unsigned int start, size_t len)
+char			*ft_strsub(char const *s, unsigned int start, size_t len)
 {
-	char	*str;
-	size_t	i;
+	char		*str;
+	size_t		i;
 
 	if (!s)
 		return (0);

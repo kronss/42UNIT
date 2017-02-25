@@ -14,7 +14,7 @@
 
 static char				ft_size_uns_digit(uintmax_t digit)
 {
-	char res;
+	char 				res;
 
 	res = 1;
 	digit /= 10;
@@ -28,8 +28,8 @@ static char				ft_size_uns_digit(uintmax_t digit)
 
 static char				ft_strlen_uns_digit(t_list *lst, intmax_t digit)
 {
-	char	res;
-	char	tmp;
+	char				res;
+	char				tmp;
 
 	tmp = 0;
 	res = ft_size_uns_digit(digit);
@@ -52,7 +52,7 @@ static char				ft_strlen_uns_digit(t_list *lst, intmax_t digit)
 
 static char				ft_print_uns_digit(uintmax_t digit, t_list *lst)
 {
-	char len;
+	char 				len;
 
 	len = 0;
 	if (digit == 0 && lst->precision == -2)
@@ -69,7 +69,7 @@ static char				ft_print_uns_digit(uintmax_t digit, t_list *lst)
 
 static char 			ft_hend_uns_digit(t_list *lst, uintmax_t digit)
 {
-	short len;
+	short 				len;
 
 	len = 0;
 	if ((lst->flags)[2] == '0' && lst->precision == -1)

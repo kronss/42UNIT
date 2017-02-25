@@ -6,7 +6,7 @@
 /*   By: ochayche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/24 23:48:13 by ochayche          #+#    #+#             */
-/*   Updated: 2017/02/24 23:48:14 by ochayche         ###   ########.fr       */
+/*   Updated: 2017/02/25 17:04:59 by ochayche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,31 @@ int     main(void)
 	// printf("======================\n");
 	// fflush(stdout);
 	
-	int nbr = -1;
+	// int nbr = -1;
+	// char *s = "LYDI";
 
-	b = ft_printf("ft_p[%4.15u]\n", nbr);
-	a =    printf("orig[%4.15u]\n", nbr);
+	
+
+
+	b = ft_printf("%.2d\n", 4242);
+	a =    printf("%.2d\n", 4242);
 
 	
 	printf("ft_p: [%d]\n", b);
 	printf("orig: [%d]\n", a);
 	printf("======================\n");
 	fflush(stdout);
+
+	// b = ft_printf("ft_p[%o]\n", 0);
+	// a =    printf("orig[%o]\n", 0);
+
+
+
+	
+	// printf("ft_p: [%d]\n", b);
+	// printf("orig: [%d]\n", a);
+	// printf("======================\n");
+	// fflush(stdout);
 
     return (0);
 }

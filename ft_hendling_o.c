@@ -12,23 +12,27 @@
 
 #include "ft_printf.h"
 
-
-static char				ft_strlen_o_digit(t_list *lst, intmax_t digit)
+static char			ft_size_o_digit(intmax_t digit)
 {
-	char	res;
-	char	tmp;
-	intmax_t digit_tmp;
-	
-	tmp = 0;
-	digit_tmp = digit;
-	res = 1;
+	char 			res;
 
-	digit_tmp /= 8;
-	while (digit_tmp)
+	res = 1;
+	digit /= 8;
+	while (digit)
 	{
-		digit_tmp /= 8;
+		digit /= 8;
 		res++;
 	}
+	return (res);
+}
+
+static char			ft_strlen_o_digit(t_list *lst, intmax_t digit)
+{
+	char			res;
+	char			tmp;
+
+	tmp = 0;
+	res = ft_size_o_digit(digit);
 	if (lst->precision != -1 && lst->precision > res)
 	{
 		tmp = (lst->precision - res);
@@ -48,17 +52,13 @@ static char				ft_strlen_o_digit(t_list *lst, intmax_t digit)
 	return (res);
 }
 
-
 static char			ft_print_o_digit(uintmax_t digit, t_list *lst, char *base)
 {
-	char len;
+	char 			len;
 
 	len = 0;
-
-
 	if (digit == 0 && lst->precision == -2)
 		return (0);
-
 	if (digit >= 8)
 	{
 		len += ft_print_o_digit(digit / 8, lst, base);
@@ -69,48 +69,29 @@ static char			ft_print_o_digit(uintmax_t digit, t_list *lst, char *base)
 	return (len);
 }
 
-
-
-
-
-static short ft_hend_o_digit(t_list *lst, uintmax_t digit)
+static short		ft_hend_o_digit(t_list *lst, uintmax_t digit)
 {
-	short len;
+	short 			len;
 
 	len = 0;
 	if ((lst->flags)[2] == '0' && lst->precision == -1)
 		(lst->flags)[0] = '0';
-
 	lst->size = ft_strlen_o_digit(lst, digit);
-	printf("size precision (%d)\n", lst->precision);
-	printf("size size (%d)\n", lst->size);
-	printf("size width (%d)\n", lst->width);
-	
 	if (lst->flags[0] == '0' && lst->flags[1] == '#' && digit != 0)
 		len += ft_print_char('0');
-
 	while ((lst->flags)[3] != '-' && lst->width > (lst->size))
 		(len += ft_print_char((lst->flags)[0])) && lst->width--;
-
 	if (lst->flags[0] == ' ' && lst->flags[1] == '#' && digit != 0)
 		len += ft_print_char('0');
-	
 	while (lst->precision != -1 && lst->precision > 0)
 		(len += ft_print_char('0')) && lst->precision--;
-	
-
 	len += ft_print_o_digit(digit, lst, "01234567");
-
-
 	while (lst->width > lst->size && (lst->flags)[3] == '-')
 		(len += ft_print_char(' ')) && lst->width--;
 	return (len);
 }
 
-
-
-
-int			ft_hendling_o(t_list *lst, void *digit)
+int					ft_hendling_o(t_list *lst, void *digit)
 {
 	if (lst->spec == 'O')
 		return (ft_hend_o_digit(lst, (unsigned long)digit));

@@ -26,6 +26,10 @@
 **[5] = ' ';
 */
 
+	// printf("size precision (%d)\n", lst->precision);
+	// printf("size size (%d)\n", lst->size);
+	// printf("size width (%d)\n", lst->width);
+
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
@@ -60,10 +64,8 @@ int				ft_hendling_x(t_list *lst, void *digit);
 int				ft_hendling_o(t_list *lst, void *digit);
 int				ft_hendling_ptr(t_list *lst, void *digit);
 int				ft_print_char(int c);
-int				ft_print_nbr(int n);
 int				ft_print_str(char *str, int precision);
-int				ft_print_octal(unsigned int nbr);
-int				ft_print_wchar(wchar_t wc);
+char			ft_print_wchar(wchar_t wc);
 int				ft_print_wstr(wchar_t *wstr, int precision);
 int				ft_out(t_list *list, va_list va);
 int				ft_look_conversion(char **fmt, va_list va);

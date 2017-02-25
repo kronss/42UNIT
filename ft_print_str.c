@@ -12,14 +12,13 @@
 
 #include "ft_printf.h"
 
-int					ft_print_str(char *str, int precision)
+int						ft_print_str(char *str, int precision)
 {
-	int len;
+	int					len;
 
 	len = 0;
 	if (str == NULL)
 		return (ft_print_str("(null)", precision));
-	
 	while (*str != '\0' && precision--)
 	{
 		len += ft_print_char(*str);

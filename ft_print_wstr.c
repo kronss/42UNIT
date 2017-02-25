@@ -12,9 +12,9 @@
 
 #include "ft_printf.h"
 
-int			ft_print_wstr(wchar_t *wstr, int precision)
+int							ft_print_wstr(wchar_t *wstr, int precision)
 {
-	int res;
+	int						res;
 
 	res = 0;
 	if (wstr == NULL)

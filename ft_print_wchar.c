@@ -12,29 +12,28 @@
 
 #include "ft_printf.h"
 
-static int              size_wchar(unsigned int wc)
+static char					size_wchar(unsigned int wc)
 {
-    if (wc <= 127)
-        return (1);
-    else if (wc >= 128 && wc <= 2047)
-        return (2);
-    else if (wc >= 2048 && wc <= 65535)
-        return (3);
-    else if (wc >= 65536 && wc <= 2097151)
-        return (4);
-    else
-        return (-1);
+	if (wc <= 127)
+		return (1);
+	else if (wc >= 128 && wc <= 2047)
+		return (2);
+	else if (wc >= 2048 && wc <= 65535)
+		return (3);
+	else if (wc >= 65536 && wc <= 2097151)
+		return (4);
+	else
+		return (0);
 }
 
-int			ft_print_wchar(wchar_t wc)
+char						ft_print_wchar(wchar_t wc)
 {
-	int				res;
-	int				size;
-	unsigned char	curr_byte;
+	char					res;
+	char					size;
+	unsigned char			curr_byte;
 	
 	res = 0;
-	if ((size = size_wchar(wc)) == -1)
-	 	exit(1); // hzzzzzzzzzzzzzzzzzzzzz
+	size = size_wchar(wc);
 	if (size == 1)
 		return (ft_print_char(wc));
 	curr_byte = (240 << (4 - size)) | (wc >> ((size - 1) * 6));
