@@ -54,9 +54,7 @@ static char			ft_print_o_digit(uintmax_t digit, t_list *lst, char *base)
 	char len;
 
 	len = 0;
-	// printf("size precision (%d)\n", lst->precision);
-	// printf("size size (%d)\n", lst->size);
-	// printf("size width (%d)\n", lst->width);
+
 
 	if (digit == 0 && lst->precision == -2)
 		return (0);
@@ -84,14 +82,17 @@ static short ft_hend_o_digit(t_list *lst, uintmax_t digit)
 		(lst->flags)[0] = '0';
 
 	lst->size = ft_strlen_o_digit(lst, digit);
+	printf("size precision (%d)\n", lst->precision);
+	printf("size size (%d)\n", lst->size);
+	printf("size width (%d)\n", lst->width);
 	
-	if (lst->flags[0] == '0' && lst->flags[1] == '#')// && digit != 0)
+	if (lst->flags[0] == '0' && lst->flags[1] == '#' && digit != 0)
 		len += ft_print_char('0');
 
 	while ((lst->flags)[3] != '-' && lst->width > (lst->size))
 		(len += ft_print_char((lst->flags)[0])) && lst->width--;
 
-	if (lst->flags[0] == ' ' && lst->flags[1] == '#')// && digit != 0)
+	if (lst->flags[0] == ' ' && lst->flags[1] == '#' && digit != 0)
 		len += ft_print_char('0');
 	
 	while (lst->precision != -1 && lst->precision > 0)

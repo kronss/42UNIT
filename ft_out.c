@@ -34,8 +34,6 @@ int		ft_out(t_list *lst, va_list va)
 		return (ft_hendling_o(lst, va_arg(va, void *)));
 	else if (lst->spec == 'p')
 		return (ft_hendling_ptr(lst, va_arg(va, void *)));
-	else 
+	else
 		return (ft_hendling_char(lst, va_arg(va, void *)));
 }
-
-// if (!(ft_strchr_f("%sSpdDioOuUxXcC", lst->spec)) && lst->spec != '\0')
