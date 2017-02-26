@@ -10,36 +10,29 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 /*
 ** conversions: % s S p d D i o O u U x X c C
-**
 ** # 0 - + space
 ** the minimum field-width // 20
 ** precision // .10
 ** hh, h, l, ll, j, z
-**
+**[0] = default print char
 **[1] = '#';
 **[2] = '0';
 **[3] = '-';
 **[4] = '+';
-**[5] = ' ';
+**[5] = ' '; - space
 */
-
-	// printf("size precision (%d)\n", lst->precision);
-	// printf("size size (%d)\n", lst->size);
-	// printf("size width (%d)\n", lst->width);
-
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 
-#include <stdarg.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <wchar.h>
+# include <stdarg.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <wchar.h>
 
-#define ABS(x) ((x < 0) ? -(x) : (x))
+# define ABS(x) ((x < 0) ? -(x) : (x))
 
 typedef	struct	s_list
 {

@@ -55,7 +55,7 @@ static char				ft_double_hl(char *fmt, char c)
 	char				res;
 
 	res = 0;
-	while (ft_strchr_f("+-#0 .123456789hljz" , *fmt))
+	while (ft_strchr_f("+-#0 .123456789hljz", *fmt))
 	{
 		if (*fmt == c)
 			res++;
@@ -72,14 +72,14 @@ static void				ft_modifier(char **fmt, t_list **lst)
 	if (**fmt == 'h' && !(*lst)->h && !(*lst)->hh)
 	{
 		if (ft_double_hl(*fmt, 'h'))
-			(*lst)->h = 1;	
+			(*lst)->h = 1;
 		else
 			(*lst)->hh = 1;
 	}
 	if (**fmt == 'l' && !(*lst)->l && !(*lst)->ll)
 	{
 		if (ft_double_hl(*fmt, 'l'))
-			(*lst)->l = 1;	
+			(*lst)->l = 1;
 		else
 			(*lst)->ll = 1;
 	}
@@ -92,9 +92,9 @@ static void				ft_modifier(char **fmt, t_list **lst)
 int						ft_look_conversion(char **fmt, va_list va)
 {
 	t_list				*lst;
-	
+
 	create_list(&lst);
-	while ((ft_strchr_f("+-#0 .123456789hljz" , **fmt)))
+	while ((ft_strchr_f("+-#0 .123456789hljz", **fmt)))
 	{
 		(ft_strchr_f("#0-+ ", **fmt)) ? ft_flags(fmt, &lst) : 0;
 		if (ft_strchr_f("123456789", **fmt))
@@ -110,9 +110,9 @@ int						ft_look_conversion(char **fmt, va_list va)
 		(ft_strchr_f("hlzj", **fmt)) ? ft_modifier(fmt, &lst) : 0;
 		(*fmt)++;
 	}
-		if (ft_strchr_f("%sSpdDioOuUxXcC", **fmt))
-			lst->spec = **fmt;
-		else
-			lst->spec = **fmt;
+	if (ft_strchr_f("%sSpdDioOuUxXcC", **fmt))
+		lst->spec = **fmt;
+	else
+		lst->spec = **fmt;
 	return (ft_out(lst, va));
 }

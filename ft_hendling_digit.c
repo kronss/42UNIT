@@ -12,14 +12,14 @@
 
 /*
 **	handling the %digit;
-**	width -> precision -> chose specifire + precision -> (-)width -> (-)precision
+**	width -> precision -> chose specifire + precision -> (-)width -> (-)prec
 */
 
 #include "ft_printf.h"
 
-static char				ft_size_digit(intmax_t digit)	
+static char				ft_size_digit(intmax_t digit)
 {
-	char res;
+	char				res;
 
 	res = 1;
 	digit /= 10;
@@ -35,7 +35,7 @@ static char				ft_strlen_digit(t_list *lst, intmax_t digit)
 {
 	char				res;
 	char				tmp;
-	
+
 	tmp = 0;
 	res = ft_size_digit(digit);
 	if (lst->precision != -1 && lst->precision > res)
@@ -53,7 +53,7 @@ static char				ft_strlen_digit(t_list *lst, intmax_t digit)
 	else
 		lst->precision = -1;
 	if ((digit < 0) || (((lst->flags)[4] == '+' || (lst->flags)[5] == ' ') &&
-	 digit >= 0))
+	digit >= 0))
 		res++;
 	return (res);
 }
@@ -70,7 +70,7 @@ static char				ft_print_digit(intmax_t digit, t_list *lst)
 	else
 	{
 		len += ft_print_digit(digit / 10, lst);
-		len += ft_print_digit(digit % 10,lst);
+		len += ft_print_digit(digit % 10, lst);
 	}
 	return (len);
 }
@@ -82,9 +82,9 @@ static short			ft_hend_digit(t_list *lst, intmax_t digit, int *len)
 	lst->size = ft_strlen_digit(lst, digit);
 	if (digit < 0 && lst->flags[0] == '0')
 		*len += ft_print_char('-');
-	else if(digit >= 0 && lst->flags[0] == '0' && lst->flags[4] == '+')
+	else if (digit >= 0 && lst->flags[0] == '0' && lst->flags[4] == '+')
 		*len += ft_print_char('+');
-	else if(lst->flags[0] == '0' && lst->flags[5] == ' ')
+	else if (lst->flags[0] == '0' && lst->flags[5] == ' ')
 		*len += ft_print_char(' ');
 	while ((lst->flags)[3] != '-' && lst->width > (lst->size))
 		(*len += ft_print_char((lst->flags)[0])) && lst->width--;
@@ -92,7 +92,7 @@ static short			ft_hend_digit(t_list *lst, intmax_t digit, int *len)
 		*len += ft_print_char('+');
 	else if (digit < 0 && lst->flags[0] == ' ' && lst->flags[0] != '0')
 		*len += ft_print_char('-');
-	else if ((lst->flags)[5] == ' ' && digit >= 0 && lst->flags[0] != '0' )
+	else if ((lst->flags)[5] == ' ' && digit >= 0 && lst->flags[0] != '0')
 		*len += ft_print_char(' ');
 	while (lst->precision != -1 && lst->precision > 0)
 		(*len += ft_print_char('0')) && lst->precision--;

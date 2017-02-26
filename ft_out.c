@@ -20,9 +20,9 @@ int		ft_out(t_list *lst, va_list va)
 {
 	if (lst->spec == '%')
 		return (ft_print_percent(lst, '%'));
-	else if (lst->spec == 'c' || lst->spec ==  'C')
+	else if (lst->spec == 'c' || lst->spec == 'C')
 		return (ft_hendling_char(lst, va_arg(va, void *)));
-	else if (lst->spec == 's' || lst->spec ==  'S')
+	else if (lst->spec == 's' || lst->spec == 'S')
 		return (ft_hendling_str(lst, va_arg(va, void *)));
 	else if (lst->spec == 'd' || lst->spec == 'i' || lst->spec == 'D')
 		return (ft_hendling_digit(lst, va_arg(va, void *)));

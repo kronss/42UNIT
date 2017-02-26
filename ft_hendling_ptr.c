@@ -91,7 +91,7 @@ static short			ft_hend_ptr(t_list *lst, uintmax_t digit)
 	return (len);
 }
 
-int			ft_hendling_ptr(t_list *lst, void *digit)
+int						ft_hendling_ptr(t_list *lst, void *digit)
 {
 	return (ft_hend_ptr(lst, (uintmax_t)digit));
 }

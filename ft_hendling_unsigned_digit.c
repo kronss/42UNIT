@@ -14,7 +14,7 @@
 
 static char				ft_size_uns_digit(uintmax_t digit)
 {
-	char 				res;
+	char				res;
 
 	res = 1;
 	digit /= 10;
@@ -52,7 +52,7 @@ static char				ft_strlen_uns_digit(t_list *lst, intmax_t digit)
 
 static char				ft_print_uns_digit(uintmax_t digit, t_list *lst)
 {
-	char 				len;
+	char				len;
 
 	len = 0;
 	if (digit == 0 && lst->precision == -2)
@@ -67,9 +67,9 @@ static char				ft_print_uns_digit(uintmax_t digit, t_list *lst)
 	return (len);
 }
 
-static char 			ft_hend_uns_digit(t_list *lst, uintmax_t digit)
+static char				ft_hend_uns_digit(t_list *lst, uintmax_t digit)
 {
-	short 				len;
+	short				len;
 
 	len = 0;
 	if ((lst->flags)[2] == '0' && lst->precision == -1)
@@ -87,7 +87,7 @@ static char 			ft_hend_uns_digit(t_list *lst, uintmax_t digit)
 
 int						ft_hendling_unsigned_digit(t_list *lst, void *digit)
 {
-		if (lst->spec == 'U')
+	if (lst->spec == 'U')
 		return (ft_hend_uns_digit(lst, (unsigned long)digit));
 	else if (lst->j)
 		return (ft_hend_uns_digit(lst, (uintmax_t)digit));

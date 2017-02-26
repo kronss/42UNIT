@@ -31,7 +31,7 @@ char						ft_print_wchar(wchar_t wc)
 	char					res;
 	char					size;
 	unsigned char			curr_byte;
-	
+
 	res = 0;
 	size = size_wchar(wc);
 	if (size == 1)
@@ -41,7 +41,7 @@ char						ft_print_wchar(wchar_t wc)
 	size--;
 	while (size--)
 	{
-		curr_byte = ((wc >> ((size) * 6)) & 63)| 128;
+		curr_byte = ((wc >> ((size) * 6)) & 63) | 128;
 		res += ft_print_char(curr_byte);
 	}
 	return (res);

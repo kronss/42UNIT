@@ -14,7 +14,7 @@
 
 static char			ft_size_o_digit(intmax_t digit)
 {
-	char 			res;
+	char			res;
 
 	res = 1;
 	digit /= 8;
@@ -54,7 +54,7 @@ static char			ft_strlen_o_digit(t_list *lst, intmax_t digit)
 
 static char			ft_print_o_digit(uintmax_t digit, t_list *lst, char *base)
 {
-	char 			len;
+	char			len;
 
 	len = 0;
 	if (digit == 0 && lst->precision == -2)
@@ -71,7 +71,7 @@ static char			ft_print_o_digit(uintmax_t digit, t_list *lst, char *base)
 
 static short		ft_hend_o_digit(t_list *lst, uintmax_t digit)
 {
-	short 			len;
+	short			len;
 
 	len = 0;
 	if ((lst->flags)[2] == '0' && lst->precision == -1)
