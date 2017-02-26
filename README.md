@@ -1,2 +1,2 @@
-# 42UNIT
+# ft_printf
 42 projects
