@@ -26,11 +26,11 @@ int					ft_hendling_str(t_list *lst, void *str)
 	lst->size = !lst->precision ? lst->width : lst->size;
 	if ((lst->flags)[2] == '0')
 		(lst->flags)[0] = '0';
-	while ((lst->flags)[3] != '-' && (lst->width)-- > (lst->size))
-		len += ft_print_char((lst->flags)[0]);
+	while ((lst->flags)[3] != '-' && lst->width > lst->size)
+		(len += ft_print_char((lst->flags)[0])) && (lst->width)--;
 	while ((lst->flags)[3] != '-' && lst->width > lst->precision &&
-	lst->precision != -1 && (lst->size-- > lst->precision))
-		len += ft_print_char((lst->flags)[0]);
+	lst->precision != -1 && (lst->size > lst->precision))
+		len += ft_print_char((lst->flags)[0]) && lst->width--;
 	if (lst->spec == 's' && !lst->l)
 		len += ft_print_str((char *)str, lst->precision);
 	else if (lst->spec == 'S' || (lst->spec == 's' && lst->l))
