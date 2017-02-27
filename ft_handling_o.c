@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hendling_o.c                                    :+:      :+:    :+:   */
+/*   ft_handling_o.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ochayche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -91,7 +91,7 @@ static short		ft_hend_o_digit(t_list *lst, uintmax_t digit)
 	return (len);
 }
 
-int					ft_hendling_o(t_list *lst, void *digit)
+int					ft_handling_o(t_list *lst, void *digit)
 {
 	if (lst->spec == 'O')
 		return (ft_hend_o_digit(lst, (unsigned long)digit));

@@ -49,13 +49,13 @@ typedef	struct	s_list
 	short		size;
 }				t_list;
 
-int				ft_hendling_char(t_list *lst, void *c);
-int				ft_hendling_str(t_list *lst, void *str);
-int				ft_hendling_digit(t_list *lst, void *digit);
-int				ft_hendling_unsigned_digit(t_list *lst, void *digit);
-int				ft_hendling_x(t_list *lst, void *digit);
-int				ft_hendling_o(t_list *lst, void *digit);
-int				ft_hendling_ptr(t_list *lst, void *digit);
+int				ft_handling_char(t_list *lst, void *c);
+int				ft_handling_str(t_list *lst, void *str);
+int				ft_handling_digit(t_list *lst, void *digit);
+int				ft_handling_unsigned_digit(t_list *lst, void *digit);
+int				ft_handling_x(t_list *lst, void *digit);
+int				ft_handling_o(t_list *lst, void *digit);
+int				ft_handling_ptr(t_list *lst, void *digit);
 int				ft_print_char(int c);
 int				ft_print_str(char *str, int precision);
 char			ft_print_wchar(wchar_t wc);

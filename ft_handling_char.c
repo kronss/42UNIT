@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hendling_char.c                                 :+:      :+:    :+:   */
+/*   ft_handling_char.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ochayche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -16,7 +16,7 @@
 
 #include "ft_printf.h"
 
-int					ft_hendling_char(t_list *lst, void *c)
+int					ft_handling_char(t_list *lst, void *c)
 {
 	int				len;
 
@@ -28,8 +28,10 @@ int					ft_hendling_char(t_list *lst, void *c)
 			len += ft_print_char((lst->flags)[0]);
 	if (lst->spec == 'c' && !lst->l)
 		len += ft_print_char((int)c);
-	if (lst->spec == 'C' || (lst->spec == 'c' && lst->l))
+	else if(lst->spec == 'C' || (lst->spec == 'c' && lst->l))
 		len += ft_print_char((int)c);
+	else
+		len += ft_print_char(lst->spec);
 	if (lst->width > 1 && (lst->flags)[3] == '-')
 		while ((lst->width)-- - 1)
 			len += ft_print_char(' ');

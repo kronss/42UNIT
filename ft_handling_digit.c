@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hendling_digit.c                                :+:      :+:    :+:   */
+/*   ft_handling_digit.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ochayche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -102,7 +102,7 @@ static short			ft_hend_digit(t_list *lst, intmax_t digit, int *len)
 	return (*len);
 }
 
-int						ft_hendling_digit(t_list *lst, void *digit)
+int						ft_handling_digit(t_list *lst, void *digit)
 {
 	int len;
 

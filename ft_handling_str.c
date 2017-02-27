@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hendling_str.c                                  :+:      :+:    :+:   */
+/*   ft_handling_str.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ochayche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -17,7 +17,7 @@
 
 #include "ft_printf.h"
 
-int					ft_hendling_str(t_list *lst, void *str)
+int					ft_handling_str(t_list *lst, void *str)
 {
 	int len;
 

@@ -30,13 +30,13 @@ OBJECT = ./ft_printf.o \
 	./ft_strlen.o \
 	./ft_memcpy.o \
 	./ft_print_percent.o \
-	./ft_hendling_char.o \
-	./ft_hendling_str.o \
-	./ft_hendling_digit.o \
-	./ft_hendling_unsigned_digit.o \
-	./ft_hendling_x.o \
-	./ft_hendling_o.o \
-	./ft_hendling_ptr.o 
+	./ft_handling_char.o \
+	./ft_handling_str.o \
+	./ft_handling_digit.o \
+	./ft_handling_unsigned_digit.o \
+	./ft_handling_x.o \
+	./ft_handling_o.o \
+	./ft_handling_ptr.o 
 
 .PHONY: all clean fclean re
 
@@ -72,8 +72,8 @@ ft_atoi.o: ft_atoi.c
 ft_print_str.o: ft_print_str.c
 	$(GCC) $(F) -c ft_print_str.c
 
-ft_hendling_ptr.o: ft_hendling_ptr.c
-	$(GCC) $(F) -c ft_hendling_ptr.c
+ft_handling_ptr.o: ft_handling_ptr.c
+	$(GCC) $(F) -c ft_handling_ptr.c
 
 ft_print_wchar.o: ft_print_wchar.c
 	$(GCC) $(F) -c ft_print_wchar.c
@@ -102,20 +102,20 @@ ft_atoi_f.o: ft_atoi_f.c
 ft_print_percent.o: ft_print_percent.c
 	$(GCC) $(F) -c ft_print_percent.c
 
-ft_hendling_char.o: ft_hendling_char.c
-	$(GCC) $(F) -c ft_hendling_char.c
+ft_handling_char.o: ft_handling_char.c
+	$(GCC) $(F) -c ft_handling_char.c
 
-ft_hendling_str.o: ft_hendling_str.c
-	$(GCC) $(F) -c ft_hendling_str.c
+ft_handling_str.o: ft_handling_str.c
+	$(GCC) $(F) -c ft_handling_str.c
 
-ft_hendling_digit.o: ft_hendling_digit.c
-	$(GCC) $(F) -c ft_hendling_digit.c
+ft_handling_digit.o: ft_handling_digit.c
+	$(GCC) $(F) -c ft_handling_digit.c
 
-ft_hendling_unsigned_digit.o: ft_hendling_unsigned_digit.c
-	$(GCC) $(F) -c ft_hendling_unsigned_digit.c
+ft_handling_unsigned_digit.o: ft_handling_unsigned_digit.c
+	$(GCC) $(F) -c ft_handling_unsigned_digit.c
 
-ft_hendling_x.o: ft_hendling_x.c
-	$(GCC) $(F) -c ft_hendling_x.c
+ft_handling_x.o: ft_handling_x.c
+	$(GCC) $(F) -c ft_handling_x.c
 
-ft_hendling_o.o: ft_hendling_o.c
-	$(GCC) $(F) -c ft_hendling_o.c
+ft_handling_o.o: ft_handling_o.c
+	$(GCC) $(F) -c ft_handling_o.c

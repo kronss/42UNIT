@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hendling_unsigned_digit.c                       :+:      :+:    :+:   */
+/*   ft_handling_unsigned_digit.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ochayche <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -85,7 +85,7 @@ static char				ft_hend_uns_digit(t_list *lst, uintmax_t digit)
 	return (len);
 }
 
-int						ft_hendling_unsigned_digit(t_list *lst, void *digit)
+int						ft_handling_unsigned_digit(t_list *lst, void *digit)
 {
 	if (lst->spec == 'U')
 		return (ft_hend_uns_digit(lst, (unsigned long)digit));
