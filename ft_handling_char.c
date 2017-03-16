@@ -16,7 +16,7 @@
 
 #include "ft_printf.h"
 
-int					ft_handling_char(t_list *lst, void *c)
+int					ft_handling_char(t_flist *lst, void *c)
 {
 	int				len;
 
@@ -28,7 +28,7 @@ int					ft_handling_char(t_list *lst, void *c)
 			len += ft_print_char((lst->flags)[0]);
 	if (lst->spec == 'c' && !lst->l)
 		len += ft_print_char((int)c);
-	else if(lst->spec == 'C' || (lst->spec == 'c' && lst->l))
+	else if (lst->spec == 'C' || (lst->spec == 'c' && lst->l))
 		len += ft_print_char((int)c);
 	else
 		len += ft_print_char(lst->spec);

@@ -13,41 +13,40 @@
 /*
 **	parsing format str between % and conversion specifier
 **	pushing data to struct
-**	list->flags[1] = '#';
-**	list->flags[2] = '0';
-**	list->flags[3] = '-';
-**	list->flags[4] = '+';
-**	list->flags[5] = ' ';
+**	lst.flags[1] = '#';
+**	lst->flags[2] = '0';
+**	lst->flags[3] = '-';
+**	lst->flags[4] = '+';
+**	lst->flags[5] = ' ';
 */
 
 #include "ft_printf.h"
 
-static void				create_list(t_list **list)
+static void				create_list(t_flist *lst)
 {
-	(*list) = malloc(sizeof(t_list));
-	(*list)->flags = ft_strdup(" *****");
-	(*list)->width = -1;
-	(*list)->precision = -1;
-	(*list)->hh = 0;
-	(*list)->h = 0;
-	(*list)->l = 0;
-	(*list)->z = 0;
-	(*list)->ll = 0;
-	(*list)->j = 0;
+	lst->flags = ft_strdup(" *****");
+	lst->width = -1;
+	lst->precision = -1;
+	lst->hh = 0;
+	lst->h = 0;
+	lst->l = 0;
+	lst->z = 0;
+	lst->ll = 0;
+	lst->j = 0;
 }
 
-static void				ft_flags(char **fmt, t_list **list)
+static void				ft_flags(char **fmt, t_flist *lst)
 {
 	if (**fmt == '#')
-		((*list)->flags)[1] = '#';
+		(lst->flags)[1] = '#';
 	else if (**fmt == '0')
-		((*list)->flags)[2] = '0';
+		(lst->flags)[2] = '0';
 	else if (**fmt == '-')
-		((*list)->flags)[3] = '-';
+		(lst->flags)[3] = '-';
 	else if (**fmt == '+')
-		((*list)->flags)[4] = '+';
+		(lst->flags)[4] = '+';
 	else if (**fmt == ' ')
-		((*list)->flags)[5] = ' ';
+		(lst->flags)[5] = ' ';
 }
 
 static char				ft_double_hl(char *fmt, char c)
@@ -67,31 +66,31 @@ static char				ft_double_hl(char *fmt, char c)
 		return (0);
 }
 
-static void				ft_modifier(char **fmt, t_list **lst)
+static void				ft_modifier(char **fmt, t_flist *lst)
 {
-	if (**fmt == 'h' && !(*lst)->h && !(*lst)->hh)
+	if (**fmt == 'h' && !(lst->h) && !(lst->hh))
 	{
 		if (ft_double_hl(*fmt, 'h'))
-			(*lst)->h = 1;
+			lst->h = 1;
 		else
-			(*lst)->hh = 1;
+			lst->hh = 1;
 	}
-	if (**fmt == 'l' && !(*lst)->l && !(*lst)->ll)
+	if (**fmt == 'l' && !(lst->l) && !(lst->ll))
 	{
 		if (ft_double_hl(*fmt, 'l'))
-			(*lst)->l = 1;
+			lst->l = 1;
 		else
-			(*lst)->ll = 1;
+			lst->ll = 1;
 	}
 	if (**fmt == 'z')
-		((*lst)->z = 1);
+		lst->z = 1;
 	if (**fmt == 'j')
-		((*lst)->j = 1);
+		(lst->j = 1);
 }
 
 int						ft_look_conversion(char **fmt, va_list va)
 {
-	t_list				*lst;
+	t_flist				lst;
 
 	create_list(&lst);
 	while ((ft_strchr_f("+-#0 .123456789hljz", **fmt)))
@@ -99,20 +98,20 @@ int						ft_look_conversion(char **fmt, va_list va)
 		(ft_strchr_f("#0-+ ", **fmt)) ? ft_flags(fmt, &lst) : 0;
 		if (ft_strchr_f("123456789", **fmt))
 		{
-			lst->width = ft_atoi_f(fmt);
+			lst.width = ft_atoi_f(fmt);
 			continue ;
 		}
 		if (**fmt == '.' && (*fmt)++)
 		{
-			lst->precision = ft_atoi_f(fmt);
+			lst.precision = ft_atoi_f(fmt);
 			continue ;
 		}
 		(ft_strchr_f("hlzj", **fmt)) ? ft_modifier(fmt, &lst) : 0;
 		(*fmt)++;
 	}
 	if (ft_strchr_f("%sSpdDioOuUxXcC", **fmt))
-		lst->spec = **fmt;
+		lst.spec = **fmt;
 	else
-		lst->spec = **fmt;
-	return (ft_out(lst, va));
+		lst.spec = **fmt;
+	return (ft_out(&lst, va));
 }

@@ -26,7 +26,7 @@ static char				ft_size_uns_digit(uintmax_t digit)
 	return (res);
 }
 
-static char				ft_strlen_uns_digit(t_list *lst, intmax_t digit)
+static char				ft_strlen_uns_digit(t_flist *lst, intmax_t digit)
 {
 	char				res;
 	char				tmp;
@@ -50,7 +50,7 @@ static char				ft_strlen_uns_digit(t_list *lst, intmax_t digit)
 	return (res);
 }
 
-static char				ft_print_uns_digit(uintmax_t digit, t_list *lst)
+static char				ft_print_uns_digit(uintmax_t digit, t_flist *lst)
 {
 	char				len;
 
@@ -67,7 +67,7 @@ static char				ft_print_uns_digit(uintmax_t digit, t_list *lst)
 	return (len);
 }
 
-static char				ft_hend_uns_digit(t_list *lst, uintmax_t digit)
+static char				ft_hend_uns_digit(t_flist *lst, uintmax_t digit)
 {
 	short				len;
 
@@ -85,7 +85,7 @@ static char				ft_hend_uns_digit(t_list *lst, uintmax_t digit)
 	return (len);
 }
 
-int						ft_handling_unsigned_digit(t_list *lst, void *digit)
+int						ft_handling_unsigned_digit(t_flist *lst, void *digit)
 {
 	if (lst->spec == 'U')
 		return (ft_hend_uns_digit(lst, (unsigned long)digit));

@@ -26,7 +26,7 @@ static char			ft_size_o_digit(intmax_t digit)
 	return (res);
 }
 
-static char			ft_strlen_o_digit(t_list *lst, intmax_t digit)
+static char			ft_strlen_o_digit(t_flist *lst, intmax_t digit)
 {
 	char			res;
 	char			tmp;
@@ -52,7 +52,7 @@ static char			ft_strlen_o_digit(t_list *lst, intmax_t digit)
 	return (res);
 }
 
-static char			ft_print_o_digit(uintmax_t digit, t_list *lst, char *base)
+static char			ft_print_o_digit(uintmax_t digit, t_flist *lst, char *base)
 {
 	char			len;
 
@@ -69,7 +69,7 @@ static char			ft_print_o_digit(uintmax_t digit, t_list *lst, char *base)
 	return (len);
 }
 
-static short		ft_hend_o_digit(t_list *lst, uintmax_t digit)
+static short		ft_hend_o_digit(t_flist *lst, uintmax_t digit)
 {
 	short			len;
 
@@ -91,7 +91,7 @@ static short		ft_hend_o_digit(t_list *lst, uintmax_t digit)
 	return (len);
 }
 
-int					ft_handling_o(t_list *lst, void *digit)
+int					ft_handling_o(t_flist *lst, void *digit)
 {
 	if (lst->spec == 'O')
 		return (ft_hend_o_digit(lst, (unsigned long)digit));

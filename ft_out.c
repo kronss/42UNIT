@@ -16,24 +16,29 @@
 
 #include "ft_printf.h"
 
-int		ft_out(t_list *lst, va_list va)
+int		ft_out(t_flist *lst, va_list va)
 {
+	int		res;
+
+	res = 0;
 	if (lst->spec == '%')
-		return (ft_print_percent(lst, '%'));
+		res = (ft_print_percent(lst, '%'));
 	else if (lst->spec == 'c' || lst->spec == 'C')
-		return (ft_handling_char(lst, va_arg(va, void *)));
+		res = (ft_handling_char(lst, va_arg(va, void *)));
 	else if (lst->spec == 's' || lst->spec == 'S')
-		return (ft_handling_str(lst, va_arg(va, void *)));
+		res = (ft_handling_str(lst, va_arg(va, void *)));
 	else if (lst->spec == 'd' || lst->spec == 'i' || lst->spec == 'D')
-		return (ft_handling_digit(lst, va_arg(va, void *)));
+		res = (ft_handling_digit(lst, va_arg(va, void *)));
 	else if (lst->spec == 'u' || lst->spec == 'U')
-		return (ft_handling_unsigned_digit(lst, va_arg(va, void *)));
+		res = (ft_handling_unsigned_digit(lst, va_arg(va, void *)));
 	else if (lst->spec == 'x' || lst->spec == 'X')
-		return (ft_handling_x(lst, va_arg(va, void *)));
+		res = (ft_handling_x(lst, va_arg(va, void *)));
 	else if (lst->spec == 'o' || lst->spec == 'O')
-		return (ft_handling_o(lst, va_arg(va, void *)));
+		res = (ft_handling_o(lst, va_arg(va, void *)));
 	else if (lst->spec == 'p')
-		return (ft_handling_ptr(lst, va_arg(va, void *)));
+		res = (ft_handling_ptr(lst, va_arg(va, void *)));
 	else
-		return (ft_handling_char(lst, va_arg(va, void *)));
+		res = (ft_handling_char(lst, va_arg(va, void *)));
+	ft_strdel(&(lst->flags));
+	return (res);
 }

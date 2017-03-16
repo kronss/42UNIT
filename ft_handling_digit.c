@@ -31,7 +31,7 @@ static char				ft_size_digit(intmax_t digit)
 	return (res);
 }
 
-static char				ft_strlen_digit(t_list *lst, intmax_t digit)
+static char				ft_strlen_digit(t_flist *lst, intmax_t digit)
 {
 	char				res;
 	char				tmp;
@@ -58,7 +58,7 @@ static char				ft_strlen_digit(t_list *lst, intmax_t digit)
 	return (res);
 }
 
-static char				ft_print_digit(intmax_t digit, t_list *lst)
+static char				ft_print_digit(intmax_t digit, t_flist *lst)
 {
 	char len;
 
@@ -75,7 +75,7 @@ static char				ft_print_digit(intmax_t digit, t_list *lst)
 	return (len);
 }
 
-static short			ft_hend_digit(t_list *lst, intmax_t digit, int *len)
+static short			ft_hend_digit(t_flist *lst, intmax_t digit, int *len)
 {
 	if ((lst->flags)[2] == '0' && lst->precision == -1)
 		(lst->flags)[0] = '0';
@@ -102,7 +102,7 @@ static short			ft_hend_digit(t_list *lst, intmax_t digit, int *len)
 	return (*len);
 }
 
-int						ft_handling_digit(t_list *lst, void *digit)
+int						ft_handling_digit(t_flist *lst, void *digit)
 {
 	int len;
 

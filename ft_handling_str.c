@@ -17,7 +17,7 @@
 
 #include "ft_printf.h"
 
-int					ft_handling_str(t_list *lst, void *str)
+int					ft_handling_str(t_flist *lst, void *str)
 {
 	int len;
 
